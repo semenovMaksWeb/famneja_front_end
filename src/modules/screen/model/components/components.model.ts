@@ -4,8 +4,8 @@ import {AnyModel} from "../../../../type/any.model";
 import {ComponentsEventModel} from "./componentsEvent.model";
 
 export interface ComponentsModel{
-  id: number,
-  type: string,
+  id?: number,
+  type?: string,
   api?:ComponentsApiModel,
   children?: ComponentsModel[],
   schema_table?: {[key:string]: ComponentsSchemaTableModel},
@@ -13,6 +13,6 @@ export interface ComponentsModel{
   class?: {[key:string]: AnyModel},
   style?: {[key:string]: AnyModel},
   event?:{[key:string]: ComponentsEventModel[]},
-  schema_form: null,
-  params: null,
+  schema_form?: null,
+  params?: null,
 }

@@ -5,7 +5,9 @@ import { Store } from '@ngrx/store';
 import {State} from '../../store';
 import {Observable} from "rxjs";
 import {Select} from "../../store/test/test.actinons";
-import {selectorTestSelected} from "../../store/test/test.select";
+import {selectorScreenAll} from "../../store/screen/screen.select";
+import {ScreenModel} from "./model/screen.model";
+import {StoreSaveScreen} from "../../store/screen/screen.actinons";
 @Component({
   selector: 'app-screen',
   templateUrl: './screen.component.html',
@@ -13,23 +15,22 @@ import {selectorTestSelected} from "../../store/test/test.select";
   providers: [ScreenApiService]
 })
 export class ScreenComponent implements OnInit {
-  selected$: Observable<any>;
-  // screen$ = this.store.pipe(select(selectScreen));
+  screen$: Observable<ScreenModel>;
   url_back: string = "";
   constructor(private store: Store<State>,private router : Router, private screenApiService:ScreenApiService) {
-    this.selected$ = store.select(selectorTestSelected);
+    this.screen$ = store.select(selectorScreenAll);
+
+    this.screen$.subscribe((data)=>{
+      console.log(data)
+    })
   }
-
-
-  // constructor(private router : Router, private screenApiService:ScreenApiService){}
-  // constructor(private router : Router, private screenApiService:ScreenApiService, private  store:Store<AppState>) {}
 
    ngOnInit(): void {
      this.store.dispatch(new Select(31));
      this.url_back = this.router.url.replace("/screen", "");
-     // this.screenApiService.screenGet(this.url_back).subscribe((data) => {
-     //   this.store.dispatch(new SaveScreen(data));
-     // });
+     this.screenApiService.screenGet(this.url_back).subscribe((data) => {
+       this.store.dispatch(new StoreSaveScreen(data));
+     });
    }
 
 }

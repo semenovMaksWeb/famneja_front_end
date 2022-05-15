@@ -6,13 +6,18 @@ import {
 
 import {StateTest} from "./test/test.state";
 import {reducerTest} from "./test/test.reducers";
+import {reducerScreen} from "./screen/screen.reducers";
+import {ScreenModel} from "../modules/screen/model/screen.model";
+import {StateScreen} from "./screen/screen.state";
 
 export interface State {
   test: StateTest;
+  screen: StateScreen;
 }
 
 export const reducers: ActionReducerMap<State, any> = {
-  test: reducerTest
+  test: reducerTest,
+  screen: reducerScreen
 };
 
 
