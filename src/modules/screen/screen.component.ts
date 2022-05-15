@@ -4,7 +4,6 @@ import {ScreenApiService} from "../../api/screen/screen-api.service";
 import { Store } from '@ngrx/store';
 import {State} from '../../store';
 import {Observable} from "rxjs";
-import {Select} from "../../store/test/test.actinons";
 import {selectorScreenAll} from "../../store/screen/screen.select";
 import {ScreenModel} from "./model/screen.model";
 import {StoreSaveScreen} from "../../store/screen/screen.actinons";
@@ -26,7 +25,6 @@ export class ScreenComponent implements OnInit {
   }
 
    ngOnInit(): void {
-     this.store.dispatch(new Select(31));
      this.url_back = this.router.url.replace("/screen", "");
      this.screenApiService.screenGet(this.url_back).subscribe((data) => {
        this.store.dispatch(new StoreSaveScreen(data));
