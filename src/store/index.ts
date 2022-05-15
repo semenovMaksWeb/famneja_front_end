@@ -1,24 +1,26 @@
 import {
   ActionReducerMap,
-  createSelector,
-  createFeatureSelector,
-  ActionReducer,
   MetaReducer,
 } from '@ngrx/store';
 
-import * as fromFilms from './test/test.reducers';
+
+import {StateTest} from "./test/test.state";
+import {reducerTest} from "./test/test.reducers";
 
 export interface State {
-  films: fromFilms.State;
+  test: StateTest;
 }
 
 export const reducers: ActionReducerMap<State, any> = {
-  films: fromFilms.reducer
+  test: reducerTest
 };
 
 
+
+export const selectAll = (state:State) => state;
+
+
+
+
 export const metaReducers: MetaReducer<State>[] = [];
-
-
-export const getFilmState = createFeatureSelector<fromFilms.State>('films');
 

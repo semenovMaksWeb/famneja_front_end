@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import {State} from '../../store';
 import {Observable} from "rxjs";
 import {Select} from "../../store/test/test.actinons";
-import {getIds, getSelected} from "../../store/test/test.select";
+import {selectorTestSelected} from "../../store/test/test.select";
 @Component({
   selector: 'app-screen',
   templateUrl: './screen.component.html',
@@ -17,7 +17,7 @@ export class ScreenComponent implements OnInit {
   // screen$ = this.store.pipe(select(selectScreen));
   url_back: string = "";
   constructor(private store: Store<State>,private router : Router, private screenApiService:ScreenApiService) {
-    this.selected$ = store.select(getSelected);
+    this.selected$ = store.select(selectorTestSelected);
   }
 
 
