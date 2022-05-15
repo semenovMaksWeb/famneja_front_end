@@ -8,9 +8,10 @@ import { AppComponent } from './app.component';
 import {ScreenModule} from "../screen/screen.module";
 import  {reducers, metaReducers} from "../../store";
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     StoreModule.forRoot(reducers, { metaReducers }),

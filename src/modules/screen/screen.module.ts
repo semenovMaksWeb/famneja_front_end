@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ScreenComponent } from './screen.component';
+import {ComponentsModule} from "../../components/components.module";
 
 
 
@@ -9,7 +10,8 @@ import { ScreenComponent } from './screen.component';
     ScreenComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ComponentsModule,
   ]
 })
 export class ScreenModule { }

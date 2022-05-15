@@ -9,3 +9,7 @@ export const selectorScreenAll = createSelector(
   selectAll,
   (state: State) => state.screen.screen,
 );
+export const selectorBreadcrumbsAll = createSelector(
+  selectAll,
+  (state: State) => state.screen.screen.breadcrumbs,
+);
