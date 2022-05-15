@@ -30,7 +30,7 @@ export class ScreenComponent implements OnInit {
     })
   }
   loaderScreen(router_link:string){
-    const url_back:string = router_link.replace("/screen", "");
+    let url_back:string = router_link.replace("/screen", "") || "/";
     this.screenApiService.screenGet(url_back).subscribe((data) => {
       this.store.dispatch(new StoreSaveScreen(data));
     });
