@@ -7,5 +7,5 @@ export interface IScreenState {
 }
 
 export const initialScreenState: IScreenState = {
-  screen: {screen: {id:1, url: 'ad'}}
+  screen: {}
 };
