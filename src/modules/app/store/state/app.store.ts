@@ -9,7 +9,7 @@ export interface IAppState {
 }
 
 export const initialAppState: IAppState = {
-  screen: {}
+  screen: {screen: {id:1, url: 'ad'}}
 };
 
 export function getInitialState(): IAppState {
