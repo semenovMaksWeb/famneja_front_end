@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from "@angular/router";
+import {NavigationStart, Router} from "@angular/router";
 import {ScreenApiService} from "../../api/screen/screen-api.service";
 import { Store } from '@ngrx/store';
 import {State} from '../../store';
@@ -18,20 +18,24 @@ import {TypeNullModule} from "../../type/typeNull.module";
 export class ScreenComponent implements OnInit {
   screen$: Observable<ScreenModel>;
   breadcrumbs$: Observable<TypeNullModule<BreadcrumbsModel[]>>;
-  url_back: string = "";
+  // url_back: string = "";
   constructor(private store: Store<State>,private router : Router, private screenApiService:ScreenApiService) {
     this.screen$ = store.select(selectorScreenAll);
     this.breadcrumbs$ = store.select(selectorBreadcrumbsAll);
-    this.screen$.subscribe((data)=>{
-      console.log(data)
+    this.router.events.subscribe((event)=>{
+      if (event instanceof NavigationStart) {
+        this.loaderScreen(event.url);
+        // Show loading indicator
+      }
     })
   }
-
+  loaderScreen(router_link:string){
+    const url_back:string = router_link.replace("/screen", "");
+    this.screenApiService.screenGet(url_back).subscribe((data) => {
+      this.store.dispatch(new StoreSaveScreen(data));
+    });
+  }
    ngOnInit(): void {
-     this.url_back = this.router.url.replace("/screen", "");
-     this.screenApiService.screenGet(this.url_back).subscribe((data) => {
-       this.store.dispatch(new StoreSaveScreen(data));
-     });
+    this.loaderScreen(this.router.url);
    }
-
 }

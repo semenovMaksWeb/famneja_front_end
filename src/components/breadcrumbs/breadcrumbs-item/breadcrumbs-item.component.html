@@ -1,5 +1,4 @@
 <div [class]="'breadcrumb-item'">
   <a [class]="'breadcrumb-link'" *ngIf="breadcrumb?.url"  [routerLink]="'/screen/' + breadcrumb?.url">{{breadcrumb?.name}}</a>
   <span [class]="'breadcrumb-link breadcrumb-span'" *ngIf="!breadcrumb?.url">{{breadcrumb?.name}}</span>
-
 </div>
