@@ -9,6 +9,7 @@ import {ScreenModel} from "./model/screen.model";
 import {StoreSaveScreen} from "../../store/screen/screen.actinons";
 import {BreadcrumbsModel} from "./model/breadcrumbs.model";
 import {TypeNullModule} from "../../type/typeNull.module";
+
 @Component({
   selector: 'app-screen',
   templateUrl: './screen.component.html',
@@ -22,6 +23,9 @@ export class ScreenComponent implements OnInit {
   constructor(private store: Store<State>,private router : Router, private screenApiService:ScreenApiService) {
     this.screen$ = store.select(selectorScreenAll);
     this.breadcrumbs$ = store.select(selectorBreadcrumbsAll);
+    this.screen$.subscribe((d)=> {
+      console.log(d);
+    });
     this.router.events.subscribe((event)=>{
       if (event instanceof NavigationStart) {
         this.loaderScreen(event.url);
@@ -30,6 +34,11 @@ export class ScreenComponent implements OnInit {
     })
   }
   loaderScreen(router_link:string){
+    // this.generatorApiService.generatorApi({params: null,
+    // type: "post",
+    // url: "/procedure?name=components.component_get_all"}, {}, {}).subscribe((d)=>{
+    //   console.log(d);
+    // });
     let url_back:string = router_link.replace("/screen", "") || "/";
     this.screenApiService.screenGet(url_back).subscribe((data) => {
       this.store.dispatch(new StoreSaveScreen(data));
