@@ -23,7 +23,9 @@ import { TableTrComponent } from './table/table-tr/table-tr.component';
     TableTrComponent
   ],
   exports: [
-    BreadcrumbsListComponent
+    BreadcrumbsListComponent,
+    TableComponent,
+    KeyObject
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,9 @@
-<div [class]="'screen'">
+<div [class]="'screen'" *ngIf="screen$ | async">
     <app-breadcrumbs-list [breadcrumbs]="breadcrumbs$ | async" ></app-breadcrumbs-list>
+  <ng-template>
+
+  </ng-template>
+    <ng-template *ngFor="let component in components$ | keyObject">
+<!--      <app-table  *ngIf="component.type === 'table'" [cms]="component"> </app-table>-->
+  </ng-template>
 </div>
