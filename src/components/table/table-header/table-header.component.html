@@ -1,0 +1,7 @@
+<div [class]="'table-header'">
+  <app-table-th
+    *ngFor="let schema of cms?.schema_table | keyObject"
+    [schema]="schema"
+    [cms]="cms"
+  ></app-table-th>
+</div>
