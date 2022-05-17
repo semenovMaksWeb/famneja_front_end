@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NavigationStart, Router} from "@angular/router";
 import {ScreenApiService} from "../../api/screen/screen-api.service";
-import { Store } from '@ngrx/store';
+import {Store} from '@ngrx/store';
 import {State} from '../../store';
 import {Observable} from "rxjs";
 import {selectorBreadcrumbsAll, selectorComponents, selectorScreenAll} from "../../store/screen/screen.select";
@@ -19,35 +19,32 @@ import {ComponentsModel} from "./model/components/components.model";
 })
 export class ScreenComponent implements OnInit {
   screen$: Observable<ScreenModel>;
-  components$: Observable<TypeNullModule<{[key:string]: ComponentsModel}>>;
-  breadcrumbs$: Observable<TypeNullModule<BreadcrumbsModel[] >>;
+  components$: Observable<TypeNullModule<{ [key: string]: ComponentsModel }>>;
+  breadcrumbs$: Observable<TypeNullModule<BreadcrumbsModel[]>>;
+
   // url_back: string = "";
-  constructor(private store: Store<State>,private router : Router, private screenApiService:ScreenApiService) {
+  constructor(private store: Store<State>, private router: Router, private screenApiService: ScreenApiService) {
     this.screen$ = store.select(selectorScreenAll);
     this.components$ = store.select(selectorComponents);
     this.breadcrumbs$ = store.select(selectorBreadcrumbsAll);
-    this.screen$.subscribe((d)=> {
+    this.screen$.subscribe((d) => {
       console.log(d);
     });
-    this.router.events.subscribe((event)=>{
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.loaderScreen(event.url);
-        // Show loading indicator
       }
     })
   }
-  loaderScreen(router_link:string){
-    // this.generatorApiService.generatorApi({params: null,
-    // type: "post",
-    // url: "/procedure?name=components.component_get_all"}, {}, {}).subscribe((d)=>{
-    //   console.log(d);
-    // });
-    let url_back:string = router_link.replace("/screen", "") || "/";
+
+  loaderScreen(router_link: string) {
+    let url_back: string = router_link.replace("/screen", "") || "/";
     this.screenApiService.screenGet(url_back).subscribe((data) => {
       this.store.dispatch(new StoreSaveScreen(data));
     });
   }
-   ngOnInit(): void {
+
+  ngOnInit(): void {
     this.loaderScreen(this.router.url);
-   }
+  }
 }

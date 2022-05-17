@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ComponentsModel} from "../../../modules/screen/model/components/components.model";
 
 @Component({
   selector: 'app-table-tr',
@@ -13,4 +14,6 @@ export class TableTrComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() dataset: any;
+  @Input() cms: ComponentsModel = {};
 }

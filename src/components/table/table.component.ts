@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentsModel} from "../../modules/screen/model/components/components.model";
 import {GeneratorApiService} from "../../servers/generatorApi/generator-api.service";
+import {StoreTableSaveDataset} from "../../store/screen/screen.actinons";
+import {Store} from "@ngrx/store";
+import {State} from "../../store";
 
 @Component({
   selector: 'app-table',
@@ -10,13 +13,15 @@ import {GeneratorApiService} from "../../servers/generatorApi/generator-api.serv
 })
 export class TableComponent implements OnInit {
 
-  constructor(private readonly generatorApiService: GeneratorApiService) {
+  constructor(private store: Store<State>, private readonly generatorApiService: GeneratorApiService) {
   }
 
   ngOnInit(): void {
-    if (this.cms.api) {
-      this.generatorApiService.generatorApi(this.cms.api, {}, {}).subscribe((data:any)=>{
-        console.log(data);
+    if (this.cms.api && !this.cms.dataset) {
+      this.generatorApiService.generatorApi(this.cms.api, {}, {}).subscribe((data: any) => {
+        if (this.cms.id != undefined) {
+         this.store.dispatch(new StoreTableSaveDataset({key: this.cms.id.toString(), value: data}));
+        }
       });
     }
   }

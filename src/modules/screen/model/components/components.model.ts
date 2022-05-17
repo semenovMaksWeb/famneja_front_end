@@ -15,4 +15,5 @@ export interface ComponentsModel{
   event?:{[key:string]: ComponentsEventModel[]},
   schema_form?: null,
   params?: null,
+  dataset?: any[],
 }

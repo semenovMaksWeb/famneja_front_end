@@ -4,5 +4,5 @@ export interface StateScreen {
   screen: ScreenModel
 }
 export const initialScreenState:StateScreen = {
-  screen: {}
+  screen: {components: {}}
 }

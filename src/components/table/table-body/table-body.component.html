@@ -1,7 +1,3 @@
 <div [class]="'table-body'">
-
-  <app-table-tr>
-
-
-  </app-table-tr>
+  <app-table-tr *ngFor="let dataset of cms?.dataset" [cms]="cms" [dataset]="dataset"></app-table-tr>
 </div>

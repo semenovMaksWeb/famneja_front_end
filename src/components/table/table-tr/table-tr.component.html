@@ -1,1 +1,5 @@
-<p></p>
+<div [class]="'table-tr'">
+  <ng-container *ngFor="let schema of cms.schema_table | keyObject">
+    <app-table-td [cms]="cms" [value]="dataset[schema.key]" [schema]="schema"></app-table-td>
+  </ng-container>
+</div>

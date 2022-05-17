@@ -4,11 +4,11 @@ import {ComponentsSchemaTableModel} from "../../../modules/screen/model/componen
 import {AllStyle} from "../libs/all-style";
 
 @Component({
-  selector: 'app-table-th',
-  templateUrl: './table-th.component.html',
-  styleUrls: ['./table-th.component.less']
+  selector: 'app-table-td',
+  templateUrl: './table-td.component.html',
+  styleUrls: ['./table-td.component.less']
 })
-export class TableThComponent implements OnInit {
+export class TableTdComponent implements OnInit {
   style = {};
   constructor() {
   }
@@ -17,6 +17,7 @@ export class TableThComponent implements OnInit {
     this.style = AllStyle(this.schema);
   }
 
+  @Input() value: any;
   @Input() cms: ComponentsModel = {};
   @Input() schema?: ComponentsSchemaTableModel;
 
