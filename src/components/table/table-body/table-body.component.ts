@@ -8,9 +8,11 @@ import {ComponentsModel} from "../../../modules/screen/model/components/componen
 })
 export class TableBodyComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
   @Input() cms: ComponentsModel = {};
 }

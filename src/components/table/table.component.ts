@@ -10,10 +10,11 @@ import {GeneratorApiService} from "../../servers/generatorApi/generator-api.serv
 })
 export class TableComponent implements OnInit {
 
-  constructor(private readonly generatorApiService: GeneratorApiService) { }
+  constructor(private readonly generatorApiService: GeneratorApiService) {
+  }
 
   ngOnInit(): void {
-    if (this.cms.api){
+    if (this.cms.api) {
       this.generatorApiService.generatorApi(this.cms.api);
     }
   }

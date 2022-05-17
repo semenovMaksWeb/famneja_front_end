@@ -9,8 +9,11 @@ import {BreadcrumbsModel} from "../../../modules/screen/model/breadcrumbs.model"
 })
 export class BreadcrumbsItemComponent implements OnInit {
 
-  constructor() { }
-  @Input() breadcrumb:TypeNullModule<BreadcrumbsModel> = {};
+  constructor() {
+  }
+
+  @Input() breadcrumb: TypeNullModule<BreadcrumbsModel> = {};
+
   ngOnInit(): void {
   }
 

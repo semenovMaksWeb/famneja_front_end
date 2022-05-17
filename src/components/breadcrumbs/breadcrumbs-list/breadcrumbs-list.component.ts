@@ -9,8 +9,10 @@ import {TypeNullModule} from "../../../type/typeNull.module";
 })
 export class BreadcrumbsListComponent implements OnInit {
 
-  constructor() { }
-  @Input() breadcrumbs:TypeNullModule<BreadcrumbsModel[]>  = [];
+  constructor() {
+  }
+
+  @Input() breadcrumbs: TypeNullModule<BreadcrumbsModel[]> = [];
 
   ngOnInit(): void {
   }

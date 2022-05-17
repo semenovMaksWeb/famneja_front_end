@@ -11,14 +11,16 @@ export class TableThComponent implements OnInit {
   style = {};
 
   constructor() {
-    if (this.schema?.w){
+    if (this.schema?.w) {
       this.style = {
         'width': this.schema?.w
       }
     }
   }
+
   ngOnInit(): void {
   }
+
   @Input() cms: ComponentsModel = {};
   @Input() schema?: ComponentsSchemaTableModel;
 
