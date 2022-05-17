@@ -1,9 +1,6 @@
 <div [class]="'screen'" *ngIf="screen$ | async">
+    <!-- обработка хлебных крошек -->
     <app-breadcrumbs-list [breadcrumbs]="breadcrumbs$ | async" ></app-breadcrumbs-list>
-  <ng-template>
-
-  </ng-template>
-    <ng-template *ngFor="let component in components$ | keyObject">
-<!--      <app-table  *ngIf="component.type === 'table'" [cms]="component"> </app-table>-->
-  </ng-template>
+    <!-- обработка скрина компоненты -->
+    <app-container [components]="components$ | async"></app-container>
 </div>

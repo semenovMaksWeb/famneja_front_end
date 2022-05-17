@@ -1,0 +1,6 @@
+<ng-container *ngFor="let component of components | keyObject">
+  <app-table [cms]="component" *ngIf="component.type === 'table'"></app-table>
+</ng-container>
+
+
+

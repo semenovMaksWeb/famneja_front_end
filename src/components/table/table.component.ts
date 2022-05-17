@@ -15,7 +15,9 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cms.api) {
-      this.generatorApiService.generatorApi(this.cms.api);
+      this.generatorApiService.generatorApi(this.cms.api, {}, {}).subscribe((data:any)=>{
+        console.log(data);
+      });
     }
   }
 

@@ -9,7 +9,7 @@ export class KeyObject {
   transform(value:any):any {
     let keys = [];
     for (let key in value) {
-      keys.push({key: key, value: value[key]});
+      keys.push(value[key]);
     }
     return keys;
   }}
