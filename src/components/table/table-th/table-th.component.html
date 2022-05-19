@@ -1,3 +1,10 @@
-<div [class]="'table-th'" [title]="schema?.title" [ngStyle]="style">
-  {{schema?.title}}
-</div>
+<ng-container *ngIf="!schema?.button">
+  <div [class]="'table-th table-elem'" [title]="schema?.title" [ngStyle]="style">
+    {{schema?.title}}
+  </div>
+</ng-container>
+<ng-container *ngIf="schema?.button">
+  <div [class]="'table-th table-elem'" [title]="schema?.title" [ngStyle]="style">
+    bnt
+  </div>
+</ng-container>
