@@ -27,9 +27,9 @@ export class ScreenComponent implements OnInit {
     this.screen$ = store.select(selectorScreenAll);
     this.components$ = store.select(selectorComponents);
     this.breadcrumbs$ = store.select(selectorBreadcrumbsAll);
-    this.screen$.subscribe((d) => {
-      console.log(d);
-    });
+    // this.screen$.subscribe((d) => {
+    //   console.log(d);
+    // });
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         this.loaderScreen(event.url);

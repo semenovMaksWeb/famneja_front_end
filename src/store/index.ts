@@ -17,6 +17,7 @@ export interface State {
 
 export const reducers: ActionReducerMap<State, any> = {
   test: reducerTest,
+  // @ts-ignore
   screen: reducerScreen
 };
 

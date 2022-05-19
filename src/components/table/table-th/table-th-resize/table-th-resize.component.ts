@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ComponentsModel} from "../../../../modules/screen/model/components/components.model";
 import {ComponentsSchemaTableModel} from "../../../../modules/screen/model/components/componentsSchemaTable.model";
+import {Store} from "@ngrx/store";
+import {StoreTableSchemaW} from "../../../../store/screen/screen.actinons";
 
 
 @Component({
@@ -9,24 +11,46 @@ import {ComponentsSchemaTableModel} from "../../../../modules/screen/model/compo
   styleUrls: ['./table-th-resize.component.less']
 })
 export class TableThResizeComponent implements OnInit {
-  isMove = false;
+  public isMove = false;
   startOffset = 0;
-  constructor() { }
-  mouseup(){
-    console.log('mouseup');
+
+  constructor(private readonly store: Store) {
+  }
+
+  mouseup() {
     this.isMove = false;
   }
-  mousedown(e: any){
-    e.preventDefault();
-    if (this?.schema?.w !== undefined){
+
+  move(e: any) {
+    if (this.isMove){
+      let newW = this.startOffset + e.pageX;
+      if (newW < 30){
+        newW = 30;
+      }
+      if (this?.cms?.id && this?.schema?.key) {
+        this.store.dispatch(new StoreTableSchemaW({
+          id_component: this.cms.id.toString(),
+          key_schema: this.schema?.key,
+          value: newW
+        }))
+      }
+    }
+
+  }
+
+  mousedown(e: any) {
+    // e.preventDefault();
+    if (this?.schema?.w !== undefined) {
       this.startOffset = this.schema.w - e.pageX;
       this.isMove = true;
     }
-    console.log('mousedown')
   }
+
   ngOnInit(): void {
-    document.addEventListener('mouseup', this.mouseup);
+    document.addEventListener('mousemove', this.move.bind(this));
+    document.addEventListener("mouseup", this.mouseup.bind(this));
   }
+
   @Input() cms: ComponentsModel = {};
   @Input() schema?: ComponentsSchemaTableModel;
 }

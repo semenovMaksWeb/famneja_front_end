@@ -3,12 +3,14 @@
 :root {
   --table-border-default: 1px solid #cacaca;
   --table-height:23px;
+  --table-min-width: 30px;
 }
 
 // общие стили у таблицы компоненты потомки
 .table-elem {
   border: var(--table-border-default);
   height: var(--table-height);
+  min-width: var(--table-min-width);
   // временное решение
   // #TODO временное решение нужно эти стили убрать и обыгрывать рисовку класса для td и th
   overflow: hidden;
