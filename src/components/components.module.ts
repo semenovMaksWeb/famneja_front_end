@@ -10,6 +10,7 @@ import {KeyObject} from "../pipe/keyobject";
 import { TableBodyComponent } from './table/table-body/table-body.component';
 import { TableTrComponent } from './table/table-tr/table-tr.component';
 import { TableTdComponent } from './table/table-td/table-td.component';
+import { TableThResizeComponent } from './table/table-th/table-th-resize/table-th-resize.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TableTdComponent } from './table/table-td/table-td.component';
     KeyObject,
     TableBodyComponent,
     TableTrComponent,
-    TableTdComponent
+    TableTdComponent,
+    TableThResizeComponent
   ],
   exports: [
     BreadcrumbsListComponent,
