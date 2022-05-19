@@ -29,7 +29,7 @@ export function reducerScreen(state = initialScreenState, action: ScreenAction) 
       return {
         ...state,
         screen: {
-          ...state,screen,
+          ...state.screen,
           components:{
             ...state.screen.components,
             [action.payload.id_component]:{
