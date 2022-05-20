@@ -12,6 +12,7 @@ export class TableBodyComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("ngOnInit table body")
   }
 
   @Input() cms: ComponentsModel = {};

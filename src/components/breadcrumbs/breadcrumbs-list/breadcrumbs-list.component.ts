@@ -15,6 +15,7 @@ export class BreadcrumbsListComponent implements OnInit {
   @Input() breadcrumbs: TypeNullModule<BreadcrumbsModel[]> = [];
 
   ngOnInit(): void {
+    console.log("ngOnInit breadcrumbs-list");
   }
 
 }

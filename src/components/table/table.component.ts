@@ -24,6 +24,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("ngOnInit table")
     if (this.cms.api && !this.cms.dataset) {
       this.generatorApiService.generatorApi(this.cms.api, {}, {}).subscribe((data: any) => {
         if (this.cms.id != undefined) {
@@ -31,7 +32,9 @@ export class TableComponent implements OnInit {
         }
       });
     }
-    this.className = this.generatorClassService.generatorClass(this?.cms?.class);
+    if (!this.className){
+      this.className = this.generatorClassService.generatorClass(this?.cms?.class);
+    }
   }
 
   @Input() cms: ComponentsModel = {};

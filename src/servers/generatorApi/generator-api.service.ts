@@ -14,7 +14,6 @@ export class GeneratorApiService extends BaseApiService {
     super();
   }
   public generatorApi(config: ComponentsApiModel, params?:any, body?:any):Observable<AnyModel>{
-    console.log(config);
     const url = `${this.baseUrlApi}${config.url}`;
     if (config.type === "post"){
       return this.httpClient.post<AnyModel>(url, body, {params: params } );
