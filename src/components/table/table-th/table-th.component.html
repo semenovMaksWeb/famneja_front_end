@@ -1,11 +1,6 @@
-<ng-container *ngIf="!schema?.button">
+<ng-container>
   <div [class]="'table-th table-elem'" [title]="schema?.title" [ngStyle]="style">
     {{schema?.title}}
     <app-table-th-resize [schema]="schema" [cms]="cms"></app-table-th-resize>
-  </div>
-</ng-container>
-<ng-container *ngIf="schema?.button">
-  <div [class]="'table-th table-elem'" [title]="schema?.title" [ngStyle]="style">
-    bnt
   </div>
 </ng-container>

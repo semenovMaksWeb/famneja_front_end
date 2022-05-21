@@ -13,7 +13,6 @@ import {StoreTableSchemaW} from "../../../../store/screen/screen.actinons";
 export class TableThResizeComponent implements OnInit {
   public isMove = false;
   startOffset = 0;
-  flagCreate = false;
 
   constructor(private readonly store: Store) {
     console.log('constructor table-th-resize');
@@ -53,14 +52,9 @@ export class TableThResizeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.flagCreate) {
+      console.log("ngOnInit table-th-resize")
       document.addEventListener('mousemove', this.move.bind(this));
       document.addEventListener("mouseup", this.mouseup.bind(this));
-      this.flagCreate = true;
-    }
-
-    console.log("ngOnInit table-th-resize")
-
   }
 
   @Input() cms: ComponentsModel = {};

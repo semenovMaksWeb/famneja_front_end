@@ -11,6 +11,7 @@ import { TableBodyComponent } from './table/table-body/table-body.component';
 import { TableTrComponent } from './table/table-tr/table-tr.component';
 import { TableTdComponent } from './table/table-td/table-td.component';
 import { TableThResizeComponent } from './table/table-th/table-th-resize/table-th-resize.component';
+import { ButtonComponent } from './button/button.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TableThResizeComponent } from './table/table-th/table-th-resize/table-t
     TableBodyComponent,
     TableTrComponent,
     TableTdComponent,
-    TableThResizeComponent
+    TableThResizeComponent,
+    ButtonComponent
   ],
   exports: [
     BreadcrumbsListComponent,

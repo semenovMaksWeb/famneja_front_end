@@ -1,1 +1,5 @@
-<div [class]="'table-td table-elem'" [ngStyle]="style" [title]="value">{{value}}</div>
+
+  <div [class]="'table-td table-elem'" [ngStyle]="style" [title]="value">
+    <app-button *ngIf="schema?.button" [id]="schema?.button"></app-button>
+    {{value}}
+  </div>
